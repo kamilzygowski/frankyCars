@@ -1,0 +1,23 @@
+.Navbar{
+
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+
+        li{
+            margin-inline: 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255,255,255,0.3);
+            padding:15px;
+            border-radius: 10px;
+
+            &:last-of-type{
+                position: absolute;
+                right:75px;
+            }
+        }
+    }
+}
