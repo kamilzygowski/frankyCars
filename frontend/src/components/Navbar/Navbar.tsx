@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPhone, faMap, faCartShopping } from '@fortawesome/free-solid-svg-icons'
-const Navbar = () => {
+const Navbar:React.FC = () => {
     return (
         <div className='Navbar'>
             <ul>

@@ -2,14 +2,13 @@ import React from 'react'
 import './Hero.scss';
 
 interface HeroProps {
-    header: string;
+  header: string;
 }
-const Hero:React.FC<HeroProps> = (props: HeroProps) => {
+const Hero: React.FC<HeroProps> = (props: HeroProps) => {
   return (
     <div className='Hero'>
-        <h1>{props.header}</h1>
+      <h1>{props.header}</h1>
     </div>
   )
 }
-
-export default Hero
+export default Hero;
