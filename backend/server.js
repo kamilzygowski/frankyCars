@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 const db = require("./db/data");
+const cors = require("cors");
+
+app.use(
+    cors({
+        origin:"*",
+    })
+)
 
 app.get("/cars", async (req, res) => {
     const results = await db.getCars();
