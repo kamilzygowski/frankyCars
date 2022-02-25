@@ -13,7 +13,7 @@
         height: 546px;
         background: #aceef3;
         margin: auto;
-        margin-top: 75px;
+        margin-top: 125px;
         display: flex;
         flex-direction: row;
         box-shadow: rgba(0, 0, 0, 0.65) 0px 50px 100px -20px, rgba(0, 0, 0, 0.7) 0px 30px 60px -30px,
@@ -22,7 +22,7 @@
         .addToCart {
             height: 35px;
             width: 155px;
-            margin-top: 5px;
+            margin-top: 25px;
             font-size: 20px;
             border: none;
             border-radius: 9.5px;
@@ -33,19 +33,19 @@
             &:hover {
                 cursor: pointer;
                 color: #000;
-                background: rgba(255, 255, 255, 0.5);
+                background: rgba(255, 0, 221, 0.5);
             }
         }
 
         .Carousel {
             border-radius: 5px;
-            flex: 2;
+            flex: 3;
 
             img {
                 object-fit: cover;
             }
             .carousel {
-                background: #ff7077;
+                background: rgba(0, 0, 0, 0.36);
             }
             .thumbs-wrapper {
                 margin: 0;
@@ -54,8 +54,8 @@
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
                 height: 450px;
             }
-            .slider-wrapper {
-                width: 750px;
+            .slider-wrapper{
+                width:700px;
                 margin-right: -5px;
             }
             .thumb {
@@ -63,21 +63,18 @@
             }
         }
         .detailsText {
-            flex: 1;
+            flex: 2;
             margin-top: 5px;
-            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-                rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-                rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
             p {
-                font-size: 22px;
+                font-size: 19px;
                 text-align: start;
                 padding-left: 30px;
 
                 span {
                     font-weight: 800;
-                    font-size: 24px;
+                    font-size: 21px;
                 }
             }
         }

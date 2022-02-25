@@ -11,12 +11,14 @@
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(47, 54, 64, 0.3);
             padding: 15px;
             border-radius: 10px;
             margin-top: 25px;
             font-weight: 600;
             font-size: 20px;
+            color:#000;
+            text-decoration: none;
 
             &:last-of-type {
                 position: absolute;
@@ -24,9 +26,26 @@
             }
 
             &:hover {
-                background: rgba(0, 0, 0, 1);
+                background: rgba(47, 54, 64, 1);
                 color: #fff;
                 transition: 0.7s ease-out;
+            }
+            &:hover > .cartItemsNumber {
+                background: #4cd137;
+                transition: 0.7s ease-out;
+                color:#fff;
+            }
+            .cartItemsNumber{
+                background: #fbc531;
+                color:#000;
+                border-radius: 100%;
+                width:40px;
+                height: 40px;
+                margin: auto;
+
+                p{
+                   padding-top:8px;
+                }
             }
         }
     }

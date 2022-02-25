@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import CarPreview from '../CarPreview/CarPreview';
 import './CarList.scss';
 
@@ -22,7 +22,12 @@ export interface CarsList {
   cars?: [];
 }
 
-const CarList: React.FC<CarsList> = (props: CarsList) => {
+interface CarListProps {
+  data: Car[];
+  shopCart: ArrayLike<ReactNode>;
+}
+
+const CarList: React.FC<CarListProps> = (props: CarListProps) => {
   const carsToDisplay: Car[] = props.data.filter((element: Car) => {
     return element.list_location_long === ""
   })
@@ -31,10 +36,10 @@ const CarList: React.FC<CarsList> = (props: CarsList) => {
   const warehousesInfo: Car[] = props.data.filter((element: Car) => {
     return element.list_location_long !== ""
   })
-  const [renderComponent, setRenderComponent] = useState(false);
-  const [selectedCar, setCar] = useState(carsToDisplay[1]);
-  const [warehouse, setWarehouse] = useState(carsToDisplay[1]);
-  let [isCarLicensed, setCarLicense] = useState(false);
+  const [renderComponent, setRenderComponent] = useState<boolean>(false);
+  const [selectedCar, setCar] = useState<Car>(carsToDisplay[1]);
+  const [warehouse, setWarehouse] = useState<Car>(carsToDisplay[1]);
+  let [isCarLicensed, setCarLicense] = useState<boolean>(false);
   // Get rid of objects containing only info about Warehouses
   // Sorting cars ascending by date
   carsToDisplay.sort((a: Car, b: Car) => {
@@ -73,7 +78,8 @@ const CarList: React.FC<CarsList> = (props: CarsList) => {
   return (
     <div className='CarList'>
       {
-        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} thisWarehouse={warehouse}></CarPreview> : null
+        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} shopCart={props.shopCart}
+          thisWarehouse={warehouse}></CarPreview> : null
       }
       {carsToDisplay.map((element: Car) => {
         return (
@@ -91,7 +97,6 @@ const CarList: React.FC<CarsList> = (props: CarsList) => {
           </div>
         )
       })}
-
     </div>
   )
 }
