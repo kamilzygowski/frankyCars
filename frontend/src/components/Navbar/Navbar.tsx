@@ -4,13 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPhone, faMap, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 interface NavbarProps {
-    shopCart: ArrayLike<ReactNode>;
+    cartItem: ArrayLike<ReactNode>;
 }
 const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
-
-    const ret = () => {
-        return props.shopCart.length;
-    }
     const navbarStyle = {
         color: '#000',
         textDecoration: 'none'
@@ -18,27 +14,31 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
     return (
         <div className='Navbar'>
             <ul>
-                <li>
-                    <FontAwesomeIcon icon={faHouse} />
-                    <p>Home</p>
-                </li>
-                <li>
-                    <FontAwesomeIcon icon={faPhone} />
-                    <p>Contact</p>
-                </li>
+                <Link to='/' style={navbarStyle}>
+                    <li>
+                        <FontAwesomeIcon icon={faHouse} />
+                        <p>Home</p>
+                    </li>
+                </Link>
+                <Link to='/contact' style={navbarStyle}>
+                    <li>
+                        <FontAwesomeIcon icon={faPhone} />
+                        <p>Contact</p>
+                    </li>
+                </Link>
                 <li>
                     <FontAwesomeIcon icon={faMap} />
                     <p>Localization</p>
                 </li>
-                <li>
-                    <Link to='/cart' style={navbarStyle}>
+                <Link to='/cart' style={navbarStyle}>
+                    <li className='shopCartLink'>
                         <FontAwesomeIcon icon={faCartShopping} />
                         <p>Cart</p>
                         <div className='cartItemsNumber'>
-                            <p>{ret()}</p>
+                            <p>{props.cartItem.length}</p>
                         </div>
-                    </Link>
-                </li>
+                    </li>
+                </Link>
             </ul>
         </div>
     )

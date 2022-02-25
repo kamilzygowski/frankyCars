@@ -4,7 +4,10 @@
         display: flex;
         flex-direction: row;
         margin: 0;
-
+        .shopCartLink {
+            position: absolute;
+            right: 75px;
+        }
         li {
             margin-inline: 15px;
             width: 105px;
@@ -17,13 +20,8 @@
             margin-top: 25px;
             font-weight: 600;
             font-size: 20px;
-            color:#000;
+            color: #000;
             text-decoration: none;
-
-            &:last-of-type {
-                position: absolute;
-                right: 75px;
-            }
 
             &:hover {
                 background: rgba(47, 54, 64, 1);
@@ -33,18 +31,17 @@
             &:hover > .cartItemsNumber {
                 background: #4cd137;
                 transition: 0.7s ease-out;
-                color:#fff;
+                color: #fff;
             }
-            .cartItemsNumber{
+            .cartItemsNumber {
                 background: #fbc531;
-                color:#000;
+                color: #000;
                 border-radius: 100%;
-                width:40px;
+                width: 40px;
                 height: 40px;
                 margin: auto;
-
-                p{
-                   padding-top:8px;
+                p {
+                    margin-top: 8px;
                 }
             }
         }

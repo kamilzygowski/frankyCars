@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Car } from '../CarList/CarList';
 import './CarPreview.scss';
 import { Carousel } from 'react-responsive-carousel/lib/js';
@@ -7,16 +7,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 interface CarProps {
   thisCar: Car;
   thisWarehouse: Car;
-  shopCart:ReactNode;
+  cartItem: (arg: Car) => void;
   toggleState: () => void;
 }
-const CarPreview = (props: CarProps) => {
+const CarPreview = (props: CarProps): JSX.Element => {
   const thisCar: Car = props.thisCar;
   const thisWarehouse: Car = props.thisWarehouse;
-  const addToCart = (elem:any) => {
-    const cart:any =  props.shopCart;
-    cart.push(thisCar);
-    console.log(cart)
+  const addToCart = (): void => {
+    props.cartItem(thisCar);
   }
   return (
     <div className='CarPreview' onClick={() => props.toggleState()}>
@@ -33,7 +31,7 @@ const CarPreview = (props: CarProps) => {
           <p><span>Warehouse:</span> {thisWarehouse.list_name}</p>
           <p><span>Geographic latitude:</span> {thisWarehouse.list_location_lat}</p>
           <p><span>Geographic longitude:</span> {thisWarehouse.list_location_long}</p>
-          <button className='addToCart' onClick={() => addToCart(1)}>Add to cart</button>
+          <button className='addToCart' onClick={addToCart}>Add to cart</button>
         </div>
         <Carousel autoplay={true} infiniteLoop={true} className='Carousel'>
           <div>

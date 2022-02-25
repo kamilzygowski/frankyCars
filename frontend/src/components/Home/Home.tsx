@@ -1,17 +1,15 @@
 import './Home.scss'
-import React from 'react';
+import React, { ReactNode } from 'react';
 import axios from 'axios';
 import CarList, { CarsList, Car } from '../CarList/CarList';
 import Hero from '../Hero/Hero';
-import Navbar from '../Navbar/Navbar';
 
 
 const endpointURL: string = 'http://localhost:8000/cars';
 
-class Home extends React.Component {
+class Home extends React.Component<()=>void> {
     state: any = {
         cars: [],
-        shopCartArr: []
     }
     componentDidMount() {
         // GET all the data from server
@@ -25,10 +23,8 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Home">
-                {console.log(this.state.shopCartArr)}
-                <Navbar shopCart={this.state.shopCartArr} />
                 <Hero header="Franky Cars" />
-                <CarList data={this.state.cars} shopCart={this.state.shopCartArr} />
+                <CarList data={this.state.cars} cartItem={this.props.children} />
             </div>
         );
     }

@@ -1,0 +1,55 @@
+.Cart {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li {
+            display: flex;
+            flex-direction: row;
+
+            p {
+                margin-inline: 10px;
+                font-size: 21px;
+                span {
+                    color: goldenrod;
+                }
+
+                &:nth-of-type(1) {
+                    left: 20px;
+                }
+            }
+        }
+        .deleteFromCart {
+            font-size: 28px;
+            margin: auto;
+            color: rgb(129, 5, 5);
+            margin-inline: 10px;
+
+            &:hover {
+                transition: 0.3;
+                color: #000;
+                cursor: pointer;
+            }
+        }
+        h4 {
+            font-size: 25px;
+        }
+        button {
+            margin-top: 25px;
+            height: 50px;
+            width: 160px;
+            border: 2px double #fff;
+            border-radius: 11.5px;
+            font-size: 21px;
+            background: greenyellow;
+            cursor: pointer;
+            &:hover {
+                transition: 0.55s;
+                border: 2px double #000;
+                background: rgb(113, 189, 0);
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import CarPreview from '../CarPreview/CarPreview';
 import './CarList.scss';
 
@@ -24,14 +24,15 @@ export interface CarsList {
 
 interface CarListProps {
   data: Car[];
-  shopCart: ArrayLike<ReactNode>;
+  // "any" below is necessary cause Home Component treat this props as ReactNode 
+  cartItem: any;
 }
 
-const CarList: React.FC<CarListProps> = (props: CarListProps) => {
+const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
   const carsToDisplay: Car[] = props.data.filter((element: Car) => {
     return element.list_location_long === ""
   })
-  // Then store info about Warehouses to new Array
+  // Store info about Warehouses to new Array
   // warehousesInfo[0] === info about Warehouse A, warehousesInfo[1] === info about Warehouse B etc.
   const warehousesInfo: Car[] = props.data.filter((element: Car) => {
     return element.list_location_long !== ""
@@ -42,23 +43,18 @@ const CarList: React.FC<CarListProps> = (props: CarListProps) => {
   let [isCarLicensed, setCarLicense] = useState<boolean>(false);
   // Get rid of objects containing only info about Warehouses
   // Sorting cars ascending by date
-  carsToDisplay.sort((a: Car, b: Car) => {
-    if (a.list_cars_vehicles_date_added < b.list_cars_vehicles_date_added) {
-      return -1;
-    }
-    if (a.list_cars_vehicles_date_added > b.list_cars_vehicles_date_added) {
-      return 1;
-    }
+  carsToDisplay.sort((a: Car, b: Car): number => {
+    if (a.list_cars_vehicles_date_added < b.list_cars_vehicles_date_added) return -1;
+    if (a.list_cars_vehicles_date_added > b.list_cars_vehicles_date_added) return 1;
     return 0;
   });
   const toggleState = (state?: boolean): void => {
     state ? setRenderComponent(state) : setRenderComponent((prevState: boolean) => !prevState);
   }
-  const compareWarehouses = (car: Car, warehousesArr: Car[]) => {
+  const compareWarehouses = (car: Car, warehousesArr: Car[]): Car => {
     let result: Car = car;
     warehousesArr.map((elem: Car) => {
-      if (car.list_name === elem.list_name)
-        result = elem;
+      if (car.list_name === elem.list_name) result = elem;
       return result;
     })
     return result;
@@ -78,10 +74,11 @@ const CarList: React.FC<CarListProps> = (props: CarListProps) => {
   return (
     <div className='CarList'>
       {
-        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} shopCart={props.shopCart}
+        // Passing to CarPreview 3 Propr: Boolean State of CarPreview (so thic component can close itself), Selected car info and Func which adds thisCar to CartItemArray
+        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} cartItem={props.cartItem}
           thisWarehouse={warehouse}></CarPreview> : null
       }
-      {carsToDisplay.map((element: Car) => {
+      {carsToDisplay.map((element: Car): JSX.Element => {
         return (
           <div className='Car' key={element.list_cars_vehicles_id} onClick={() => {
             setCarLicense(element.list_cars_vehicles_licensed);
