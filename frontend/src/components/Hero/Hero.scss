@@ -1,10 +1,15 @@
 .Hero {
-    margin-top: 10px;
+    margin-top: -75px;
+    background: url('https://i.postimg.cc/bv24XWf3/bluecar2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height:300px;
 
     h1 {
         font-size: 76px;
         font-family: "Carter One", cursive;
-        color: rgba(2, 25, 231, 0.85);
+        color: rgba(231, 2, 174, 0.85);
         perspective: 80px;
         outline: none;
         display: inline-block;

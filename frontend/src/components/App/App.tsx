@@ -15,18 +15,22 @@ const App = (): JSX.Element => {
     return (): void => setValue((value: number) => value + 1); // update the state to force render
   }
   // Handle change of Cart Item Array
-  const handleChange = (newValue: any): void => {
+  const handleChange = (newValue: Car): void => {
     const value = [...cartItem, newValue]
     setCart(value);
   }
   const forceUpdate: Function = useForceUpdate();
+  // Home props
+  const props = {
+    children: handleChange,
+  }
   return (
     <Router>
       <div className='App'>
         <Navbar cartItem={cartItem} />
         <Switch>
-          <Route path="/" element={<Home children={handleChange} />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<Home {...props} />} />
+          <Route path="/contact" element={<Contact/>} />
           <Route path="/cart" element={<Cart cartItem={cartItem} updateApp={forceUpdate} />} />
         </Switch>
       </div>

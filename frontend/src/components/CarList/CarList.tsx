@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CarPreview from '../CarPreview/CarPreview';
 import './CarList.scss';
 
@@ -12,7 +12,7 @@ export interface Car {
   list_cars_vehicles_make: string;
   list_cars_vehicles_model: string;
   list_cars_vehicles_year_model: number;
-  list_cars_vehicles_price: number;
+  list_cars_vehicles_price: string;
   list_cars_vehicles_licensed: boolean;
   list_cars_vehicles_date_added: Date;
 }
@@ -37,6 +37,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
   const warehousesInfo: Car[] = props.data.filter((element: Car) => {
     return element.list_location_long !== ""
   })
+
   const [renderComponent, setRenderComponent] = useState<boolean>(false);
   const [selectedCar, setCar] = useState<Car>(carsToDisplay[1]);
   const [warehouse, setWarehouse] = useState<Car>(carsToDisplay[1]);
@@ -53,7 +54,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
   }
   const compareWarehouses = (car: Car, warehousesArr: Car[]): Car => {
     let result: Car = car;
-    warehousesArr.map((elem: Car) => {
+    warehousesArr.map((elem: Car): Car => {
       if (car.list_name === elem.list_name) result = elem;
       return result;
     })
@@ -72,6 +73,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
     'https://i.postimg.cc/MG32hP6T/pexels-mike-1007410.jpg',
   ]
   return (
+
     <div className='CarList'>
       {
         // Passing to CarPreview 3 Propr: Boolean State of CarPreview (so thic component can close itself), Selected car info and Func which adds thisCar to CartItemArray
@@ -90,7 +92,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
             <img src={randomImgArray[(carsToDisplay.indexOf(element) + 1) % 10]} alt="car preview" />
             <p className='model'>{element.list_cars_vehicles_make} {element.list_cars_vehicles_model}</p>
             <p className='year'>{element.list_cars_vehicles_year_model}</p>
-            <p className='price'>{element.list_cars_vehicles_price} <span>PLN</span></p>
+            <p className='price'>{element.list_cars_vehicles_price}<span>PLN</span></p>
           </div>
         )
       })}

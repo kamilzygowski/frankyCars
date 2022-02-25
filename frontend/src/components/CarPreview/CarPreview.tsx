@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Car } from '../CarList/CarList';
 import './CarPreview.scss';
 import { Carousel } from 'react-responsive-carousel/lib/js';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface CarProps {
   thisCar: Car;
@@ -10,14 +12,26 @@ interface CarProps {
   cartItem: (arg: Car) => void;
   toggleState: () => void;
 }
+
 const CarPreview = (props: CarProps): JSX.Element => {
+  const checkIconRef = useRef<any>(null);
   const thisCar: Car = props.thisCar;
   const thisWarehouse: Car = props.thisWarehouse;
   const addToCart = (): void => {
     props.cartItem(thisCar);
+    if(checkIconRef.current !==null) checkIconRef.current.style="display:block" ;
+    // On Add to cart click user sees big check icon for 0.8 s
+    setTimeout(():void => {
+      if(checkIconRef.current!== null)
+      checkIconRef.current.style="display:none";
+    }, 650);
   }
   return (
     <div className='CarPreview' onClick={() => props.toggleState()}>
+      <div className='itemAddedToCart' ref={checkIconRef}>
+      <FontAwesomeIcon icon={faCheck} className="checkIcon"/>
+      </div>
+     
       {/* This line below makes clicking on Car info toggles showing this components state as well like the above line
       so those 2 lines neutralize each other on the below component */}
       <div className='details' onClick={() => props.toggleState()}>

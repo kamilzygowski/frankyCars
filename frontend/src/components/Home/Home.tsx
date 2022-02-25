@@ -1,5 +1,5 @@
 import './Home.scss'
-import React, { ReactNode } from 'react';
+import React from 'react';
 import axios from 'axios';
 import CarList, { CarsList, Car } from '../CarList/CarList';
 import Hero from '../Hero/Hero';
@@ -8,10 +8,10 @@ import Hero from '../Hero/Hero';
 const endpointURL: string = 'http://localhost:8000/cars';
 
 class Home extends React.Component<()=>void> {
-    state: any = {
+    state = {
         cars: [],
     }
-    componentDidMount() {
+    componentDidMount():void {
         // GET all the data from server
         axios.get(endpointURL)
             .then((result: CarsList) => {

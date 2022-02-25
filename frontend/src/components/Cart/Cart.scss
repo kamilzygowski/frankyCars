@@ -10,7 +10,7 @@
             flex-direction: row;
 
             p {
-                margin-inline: 10px;
+                margin-inline: 40px;
                 font-size: 21px;
                 span {
                     color: goldenrod;
@@ -25,7 +25,7 @@
             font-size: 28px;
             margin: auto;
             color: rgb(129, 5, 5);
-            margin-inline: 10px;
+            margin-inline: 40px;
 
             &:hover {
                 transition: 0.3;
@@ -46,10 +46,16 @@
             background: greenyellow;
             cursor: pointer;
             &:hover {
-                transition: 0.55s;
+                transition: 0.25s;
                 border: 2px double #000;
                 background: rgb(113, 189, 0);
             }
         }
+    }
+    .green {
+        color: green;
+    }
+    .gold {
+        color: goldenrod;
     }
 }
