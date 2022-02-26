@@ -1,0 +1,24 @@
+.Sidebar {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(10, 9, 19);
+    z-index: 35;
+    font-size: 36px;
+    margin: auto;
+
+    ul {
+        margin: 0;
+        list-style: none;
+        margin: auto;
+        padding-top: 50px;
+        .routerLink {
+            text-decoration: none;
+        }
+        li {
+            color: #fff;
+            cursor: pointer;
+            margin: auto;
+            margin-block: 25%;
+        }
+    }
+}

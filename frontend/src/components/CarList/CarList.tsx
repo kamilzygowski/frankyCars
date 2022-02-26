@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CarPreview from '../CarPreview/CarPreview';
 import './CarList.scss';
 
@@ -61,16 +61,16 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
     return result;
   }
   const randomImgArray: string[] = [
-    'https://i.postimg.cc/7hmLc1Wn/pexels-arina-naomi-jilly-8020727.jpg',
-    'https://i.postimg.cc/wxV37HjR/pexels-revac-film-s-photography-205337.jpg',
-    'https://i.postimg.cc/nchrm5XR/pexels-erik-mclean-7980878.jpg',
-    'https://i.postimg.cc/fTqLfKXw/pexels-garvin-st-villier-5581195.jpg',
-    'https://i.postimg.cc/8zFCK6BL/pexels-erik-mclean-4062395.jpg',
-    'https://i.postimg.cc/VvKFVmNd/pexels-alex-amorales-909907.jpg',
-    'https://i.postimg.cc/NfRt5k4J/pexels-murat-soyluoglu-1209774.jpg',
-    'https://i.postimg.cc/FHm4ckC9/pexels-mike-446389.jpg',
-    'https://i.postimg.cc/Z5chLYX6/pexels-mike-170811.jpg',
-    'https://i.postimg.cc/MG32hP6T/pexels-mike-1007410.jpg',
+    'https://i.postimg.cc/JhP006sj/pexels-alex-amorales-909907-1.webp',
+    'https://i.postimg.cc/G9whV6fn/pexels-arina-naomi-jilly-8020727-1.webp',
+    'https://i.postimg.cc/4dyd96cq/pexels-erik-mclean-4062395-1.webp',
+    'https://i.postimg.cc/s2V1VdgV/pexels-erik-mclean-7980878-1.webp',
+    'https://i.postimg.cc/63PQL8L3/pexels-garvin-st-villier-5581195-1.webp',
+    'https://i.postimg.cc/WpQGszLT/pexels-mike-1007410-1.webp',
+    'https://i.postimg.cc/nVsK87W3/pexels-mike-170811-1.webp',
+    'https://i.postimg.cc/2yBSHC2x/pexels-mike-446389-1.webp',
+    'https://i.postimg.cc/BQHxb34D/pexels-murat-soyluoglu-1209774-1.webp',
+    'https://i.postimg.cc/Sx4czPxP/pexels-revac-film-s-photography-205337.webp',
   ]
   return (
 
@@ -92,7 +92,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
             <img src={randomImgArray[(carsToDisplay.indexOf(element) + 1) % 10]} alt="car preview" />
             <p className='model'>{element.list_cars_vehicles_make} {element.list_cars_vehicles_model}</p>
             <p className='year'>{element.list_cars_vehicles_year_model}</p>
-            <p className='price'>{element.list_cars_vehicles_price}<span>PLN</span></p>
+            <p className='price'>{element.list_cars_vehicles_price}<span> PLN</span></p>
           </div>
         )
       })}

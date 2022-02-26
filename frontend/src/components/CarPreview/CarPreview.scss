@@ -8,91 +8,108 @@
     left: 0;
     color: #000;
 
-    .itemAddedToCart{
-        position: absolute;
-        color:rgb(81, 218, 81);
-        width:100%;
+    .mySwiper {
+        display: flex;
+        flex: 3;
+        @media (max-width: 950px) {
+            width: 100%;
+        }
+    }
+    .swiper-slide img {
+        display: block;
+        width: 100%;
         height: 100%;
-        top:0;
-        left:0;
+        object-fit: cover;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        &:hover {
+            color: #fff;
+        }
+    }
+    .swiper-pagination {
+        font-size: 24px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .itemAddedToCart {
+        position: absolute;
+        color: rgb(81, 218, 81);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         margin: auto;
         z-index: 20;
-        background: rgba(0,0,0,.85);
-        display:none;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
 
-        .checkIcon{
-            margin-top:250px;
+        .checkIcon {
+            margin-top: 250px;
             font-size: 285px;
-            animation: check 1.5s infinite;  
+            animation: check 1.5s infinite;
         }
     }
 
     .details {
+        transition: 0.4s;
         width: 1100px;
         height: 546px;
-        background: #aceef3;
+        background: #f5cb5c;
         margin: auto;
         margin-top: 125px;
         display: flex;
         flex-direction: row;
+        border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.65) 0px 50px 100px -20px, rgba(0, 0, 0, 0.7) 0px 30px 60px -15px,
             rgba(0, 0, 0, 0.75) 0px 2px 6px 0px inset;
+        @media (max-width: 1150px) {
+            width: 100%;
+        }
+        @media (max-width: 950px) {
+            flex-direction: column;
+            height: 700px;
+        }
+        @media (max-width: 750px) {
+        }
 
         .addToCart {
-            height: 35px;
+            height: 45px;
             width: 155px;
             margin-top: 25px;
-            font-size: 20px;
+            font-size: 24px;
             border: none;
             border-radius: 9.5px;
             color: #fff;
-            background: rgb(0, 51, 0);
+            background: rgb(2, 133, 2);
             margin-left: -20px;
+            @media (max-width: 950px) {
+                margin-top: 5px;
+                margin-bottom: 15px;
+            }
 
             &:hover {
                 cursor: pointer;
                 color: #000;
-                background: rgba(255, 0, 221, 0.5);
-            }
-        }
-
-        .Carousel {
-            border-radius: 5px;
-            flex: 3;
-
-            img {
-                object-fit: cover;
-            }
-            .carousel {
-                background: rgba(0, 0, 0, 0.36);
-            }
-            .thumbs-wrapper {
-                margin: 0;
-            }
-            .carousel-slider {
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-                height: 450px;
-            }
-            .slider-wrapper {
-                width: 700px;
-                margin-right: -5px;
-            }
-            .thumb {
-                height: 60px;
+                transition: 0.4s;
+                background: rgb(235, 185, 228);
             }
         }
         .detailsText {
             flex: 2;
-            margin-top: 5px;
-            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-                rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-                rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            margin-top: 15px;
+            @media (max-width: 950px) {
+                margin-top: 0;
+            }
 
             p {
                 font-size: 19px;
-                text-align: start;
-                padding-left: 30px;
+                text-align: center;
+                margin-block: 30px;
+                @media (max-width: 950px) {
+                    margin-block: 10px;
+                }
 
                 span {
                     font-weight: 800;
@@ -102,12 +119,11 @@
         }
     }
 }
-
 @keyframes check {
-    from{
-        width:50px;
+    from {
+        width: 50px;
     }
-    100%{
-        width:100%;
+    100% {
+        width: 100%;
     }
 }

@@ -6,8 +6,11 @@ import Navbar from '../Navbar/Navbar'
 import './App.scss'
 import Cart from '../Cart/Cart'
 import { Car } from '../CarList/CarList'
+import { Sidebar } from '../Sidebar/Sidebar'
 
 const App = (): JSX.Element => {
+  // It controlls displaying of mobile menu (bars icon)
+  const [barsIcon, setBarsIcon] = useState(true)
   const [cartItem, setCart] = useState<Car[]>([])
   // This func is made to rerender number of cart items after deleting it in Cart component
   const useForceUpdate = (): Function => {
@@ -27,11 +30,12 @@ const App = (): JSX.Element => {
   return (
     <Router>
       <div className='App'>
-        <Navbar cartItem={cartItem} />
+        <Navbar cartItem={cartItem} setBarsIcon={setBarsIcon} barsIcon={barsIcon} />
         <Switch>
           <Route path="/" element={<Home {...props} />} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart cartItem={cartItem} updateApp={forceUpdate} />} />
+          <Route path='/sidebar' element={<Sidebar setBarsIcon={setBarsIcon} />} />
         </Switch>
       </div>
     </Router>

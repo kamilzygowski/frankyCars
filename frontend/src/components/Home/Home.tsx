@@ -7,11 +7,11 @@ import Hero from '../Hero/Hero';
 
 const endpointURL: string = 'http://localhost:8000/cars';
 
-class Home extends React.Component<()=>void> {
+class Home extends React.Component<() => void> {
     state = {
         cars: [],
     }
-    componentDidMount():void {
+    componentDidMount(): void {
         // GET all the data from server
         axios.get(endpointURL)
             .then((result: CarsList) => {

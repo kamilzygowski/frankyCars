@@ -1,10 +1,14 @@
 import React, { useRef } from 'react'
 import { Car } from '../CarList/CarList';
 import './CarPreview.scss';
-import { Carousel } from 'react-responsive-carousel/lib/js';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper";
+
 
 interface CarProps {
   thisCar: Car;
@@ -19,47 +23,48 @@ const CarPreview = (props: CarProps): JSX.Element => {
   const thisWarehouse: Car = props.thisWarehouse;
   const addToCart = (): void => {
     props.cartItem(thisCar);
-    if(checkIconRef.current !==null) checkIconRef.current.style="display:block" ;
+    if (checkIconRef.current !== null) checkIconRef.current.style = "display:block";
     // On Add to cart click user sees big check icon for 0.8 s
-    setTimeout(():void => {
-      if(checkIconRef.current!== null)
-      checkIconRef.current.style="display:none";
+    setTimeout((): void => {
+      if (checkIconRef.current !== null)
+        checkIconRef.current.style = "display:none";
     }, 650);
   }
   return (
     <div className='CarPreview' onClick={() => props.toggleState()}>
       <div className='itemAddedToCart' ref={checkIconRef}>
-      <FontAwesomeIcon icon={faCheck} className="checkIcon"/>
+        <FontAwesomeIcon icon={faCheck} className="checkIcon" />
       </div>
-     
+
       {/* This line below makes clicking on Car info toggles showing this components state as well like the above line
       so those 2 lines neutralize each other on the below component */}
       <div className='details' onClick={() => props.toggleState()}>
         <div className='detailsText'>
           <h1>Car details</h1>
-          <p><span>Make:</span> {thisCar.list_cars_vehicles_make}</p>
-          <p><span>Model:</span> {thisCar.list_cars_vehicles_model}</p>
-          <p><span>Production year:</span> {thisCar.list_cars_vehicles_year_model}</p>
-          <p><span>Price:</span> {thisCar.list_cars_vehicles_price} PLN</p>
-          <p><span>Location:</span> {thisCar.list_cars_location}</p>
-          <p><span>Warehouse:</span> {thisWarehouse.list_name}</p>
-          <p><span>Geographic latitude:</span> {thisWarehouse.list_location_lat}</p>
-          <p><span>Geographic longitude:</span> {thisWarehouse.list_location_long}</p>
+          <p><span>Make :</span> {thisCar.list_cars_vehicles_make}</p>
+          <p><span>Model :</span> {thisCar.list_cars_vehicles_model}</p>
+          <p><span>Production year :</span> {thisCar.list_cars_vehicles_year_model}</p>
+          <p><span>Price :</span> {thisCar.list_cars_vehicles_price} PLN</p>
+          <p><span>Location :</span> {thisCar.list_cars_location}</p>
+          <p><span>Warehouse :</span> {thisWarehouse.list_name}</p>
           <button className='addToCart' onClick={addToCart}>Add to cart</button>
         </div>
-        <Carousel autoplay={true} infiniteLoop={true} className='Carousel'>
-          <div>
-            {/* Here would be something like taking src from props src={thisCar.img} 
-              but let's leave it like that*/}
-            <img src="https://i.postimg.cc/MG32hP6T/pexels-mike-1007410.jpg" alt="car" />
-          </div>
-          <div>
-            <img src="https://i.postimg.cc/wxV37HjR/pexels-revac-film-s-photography-205337.jpg" alt="car" />
-          </div>
-          <div>
-            <img src="https://i.postimg.cc/VvKFVmNd/pexels-alex-amorales-909907.jpg" alt="car" />
-          </div>
-        </Carousel>
+        <Swiper
+          pagination={{
+            type: "fraction",
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+          scrollbar={{ draggable: true }}
+          lazy={true}
+          autoplay={true}
+
+        >
+          <SwiperSlide><img src="https://i.postimg.cc/4dyd96cq/pexels-erik-mclean-4062395-1.webp" alt="car" /></SwiperSlide>
+          <SwiperSlide><img src="https://i.postimg.cc/Sx4czPxP/pexels-revac-film-s-photography-205337.webp" alt="car" /></SwiperSlide>
+          <SwiperSlide><img src="https://i.postimg.cc/JhP006sj/pexels-alex-amorales-909907-1.webp" alt="car" /></SwiperSlide>
+        </Swiper>
       </div>
     </div>
   )

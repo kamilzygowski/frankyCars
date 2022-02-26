@@ -1,5 +1,27 @@
 .Navbar {
+    .mobileMenu {
+        font-size: 38px;
+        position: absolute;
+        right: 55px;
+        top: 30px;
+        display: none;
+        background: rgba(255, 176, 103, 0.75);
+        padding: 5px;
+        border-radius: 10px;
+        z-index: 1;
+        &:hover {
+            transition: 0.5s;
+            color: rgb(255, 176, 103);
+            background: #000;
+        }
+        @media (max-width: 1000px) {
+            display: block;
+        }
+    }
     ul {
+        @media (max-width: 1000px) {
+            display: none;
+        }
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -7,16 +29,27 @@
         .shopCartLink {
             position: absolute;
             right: 75px;
+            width: 95px;
+            height: 125px;
+            background: rgba(47, 54, 64, 1);
+            color: #fff;
+            border-radius: 20px;
+            &:hover {
+                background: none;
+                color: #000;
+                transition: 0.7s ease-out;
+            }
         }
         li {
-            margin-inline: 15px;
-            width: 105px;
+            margin-inline: 75px;
+            width: 165px;
+            height: 65px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            background: rgba(47, 54, 64, 0.3);
+            background: #f5cb5c;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 50px;
             margin-top: 25px;
             font-weight: 600;
             font-size: 20px;

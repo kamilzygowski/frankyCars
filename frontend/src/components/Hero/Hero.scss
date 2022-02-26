@@ -1,19 +1,30 @@
 .Hero {
-    margin-top: -75px;
-    background: url('https://i.postimg.cc/bv24XWf3/bluecar2.png');
+    margin-top: 15px;
+    background-image: url("https://i.postimg.cc/0QpdKqqb/moon.webp");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height:300px;
+    //background-image: url('https://i.postimg.cc/bv24XWf3/bluecar2.png');
+    height: 300px;
+    @media (max-width: 750px) {
+        background-size: cover;
+    }
+    @media (max-width: 450px) {
+        margin-top: 85px;
+    }
 
     h1 {
+        margin-top: 75px;
         font-size: 76px;
         font-family: "Carter One", cursive;
-        color: rgba(231, 2, 174, 0.85);
+        color: rgb(10, 204, 10);
         perspective: 80px;
         outline: none;
         display: inline-block;
         text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #fff 0 -3px 2px, rgba(0, 0, 0, 0.8) 0 10px 25px;
         transition: margin-left 0.3s cubic-bezier(0, 1, 0, 1);
+        @media (max-width: 450px) {
+            margin-top: 15px;
+        }
     }
 }

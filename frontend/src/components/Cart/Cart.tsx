@@ -32,7 +32,15 @@ const Cart = (props: CartProps): JSX.Element => {
     <div className='Cart'>
       <h1>Products in cart ({props.cartItem.length})</h1>
       <ul className='cartItemList'>
-        {props.cartItem.map((elem: Car, index: number): JSX.Element => {
+        {props.cartItem.length !== 0 ?
+          <li>
+            <p className='top'><b>LP</b></p>
+            <p className='top'><b>Model</b></p>
+            <p className='top'><b>Year</b></p>
+            <p className='top'><b>Price</b></p>
+          </li>
+          : null}
+        {props.cartItem.length !== 0 ? props.cartItem.map((elem: Car, index: number): JSX.Element => {
           return (
             <li key={index}>
               <p>{index + 1}.</p>
@@ -42,7 +50,7 @@ const Cart = (props: CartProps): JSX.Element => {
               <FontAwesomeIcon className='deleteFromCart' icon={faCircleMinus} onClick={(): void => deleteFromCart(elem)} />
             </li>
           )
-        })}
+        }) : null}
         {props.cartItem.length !== 0 ? <h4>Summary: <span className='green'>{sum.toFixed(2)}</span> <span className='gold'>PLN</span></h4> : null}
         {props.cartItem.length !== 0 ? <button>Submit order</button> : null}
       </ul>

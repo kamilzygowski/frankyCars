@@ -1,30 +1,75 @@
 .Contact {
     font-size: 23px;
     margin-top: 75px;
-
+    @media (max-width: 750px) {
+        font-size: 18px;
+    }
+    @media (max-width: 550px) {
+        font-size: 12px;
+    }
     .contactWays {
         display: flex;
         flex-direction: row;
         padding: 55px;
+        @media (max-width: 750px) {
+            padding: 10px;
+        }
+        @media (max-width: 550px) {
+            padding: 0;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            padding-inline: 10px;
+            color: rgb(0, 110, 255);
+            cursor: pointer;
+        }
         div {
             display: flex;
             flex-direction: column;
             flex: 1;
             padding: 5px;
+            @media (max-width: 550px) {
+                padding: 0;
+            }
             .icons {
                 font-size: 72px;
                 padding: 35px;
-                color: #20cfdb;
+                color: #34c011;
+                @media (max-width: 550px) {
+                    font-size: 56px;
+                }
             }
             &:nth-of-type(1) {
                 border-right: 2px solid rgba(9, 9, 9, 0.65);
+                @media (max-width: 550px) {
+                    border-right: none;
+                    border-bottom: 2px solid rgba(9, 9, 9, 0.65);
+                }
             }
             &:nth-of-type(3) {
                 border-left: 2px solid rgba(9, 9, 9, 0.65);
+                @media (max-width: 550px) {
+                    border-left: none;
+                    border-top: 2px solid rgba(9, 9, 9, 0.65);
+                }
             }
         }
     }
     h1 {
         display: block;
+    }
+}
+
+@keyframes localization {
+    from {
+        font-size: 21px;
+    }
+    59% {
+        font-size: 24px;
+    }
+    95% {
+        font-size: 21px;
     }
 }

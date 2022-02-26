@@ -1,10 +1,12 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import './Navbar.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faPhone, faMap, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faPhone, faCartShopping, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 interface NavbarProps {
     cartItem: ArrayLike<ReactNode>;
+    setBarsIcon: Function;
+    barsIcon: boolean;
 }
 const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
     const navbarStyle = {
@@ -26,10 +28,6 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <p>Contact</p>
                     </li>
                 </Link>
-                <li>
-                    <FontAwesomeIcon icon={faMap} />
-                    <p>Localization</p>
-                </li>
                 <Link to='/cart' style={navbarStyle}>
                     <li className='shopCartLink'>
                         <FontAwesomeIcon icon={faCartShopping} />
@@ -40,6 +38,9 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
                     </li>
                 </Link>
             </ul>
+            <Link to="/sidebar" onClick={() => props.setBarsIcon(false)}>
+                {props.barsIcon ? <FontAwesomeIcon icon={faBars} className="mobileMenu" /> : null}
+            </Link>
         </div>
     )
 }
