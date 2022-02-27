@@ -4,10 +4,10 @@ import './Hero.scss';
 interface HeroProps {
   header: string;
 }
-const Hero: React.FC<HeroProps> = (props: HeroProps) => {
+const Hero: React.FC<HeroProps> = ({header}) => {
   return (
     <div className='Hero'>
-      <h1>{props.header}</h1>
+      <h1>{header}</h1>
     </div>
   )
 }

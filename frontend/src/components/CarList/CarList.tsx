@@ -8,13 +8,13 @@ export interface Car {
   list_location_lat: string;
   list_location_long: string;
   list_cars_location: string;
-  list_cars_vehicles_id: number;
+  list_cars_vehicles_id: string;
   list_cars_vehicles_make: string;
   list_cars_vehicles_model: string;
-  list_cars_vehicles_year_model: number;
+  list_cars_vehicles_year_model: string;
   list_cars_vehicles_price: string;
   list_cars_vehicles_licensed: boolean;
-  list_cars_vehicles_date_added: Date;
+  list_cars_vehicles_date_added: string;
 }
 export interface CarsList {
   data: Car[];
@@ -28,13 +28,13 @@ interface CarListProps {
   cartItem: any;
 }
 
-const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
-  const carsToDisplay: Car[] = props.data.filter((element: Car) => {
+const CarList: React.FC<CarListProps> = ({data, cartItem}): JSX.Element => {
+  const carsToDisplay: Car[] = data.filter((element: Car) => {
     return element.list_location_long === ""
   })
   // Store info about Warehouses to new Array
   // warehousesInfo[0] === info about Warehouse A, warehousesInfo[1] === info about Warehouse B etc.
-  const warehousesInfo: Car[] = props.data.filter((element: Car) => {
+  const warehousesInfo: Car[] = data.filter((element: Car) => {
     return element.list_location_long !== ""
   })
 
@@ -49,6 +49,7 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
     if (a.list_cars_vehicles_date_added > b.list_cars_vehicles_date_added) return 1;
     return 0;
   });
+  // Toggle state of CarPreview component 
   const toggleState = (state?: boolean): void => {
     state ? setRenderComponent(state) : setRenderComponent((prevState: boolean) => !prevState);
   }
@@ -77,12 +78,12 @@ const CarList: React.FC<CarListProps> = (props: CarListProps): JSX.Element => {
     <div className='CarList'>
       {
         // Passing to CarPreview 3 Propr: Boolean State of CarPreview (so thic component can close itself), Selected car info and Func which adds thisCar to CartItemArray
-        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} cartItem={props.cartItem}
+        renderComponent && isCarLicensed.toString() === "True" ? <CarPreview toggleState={toggleState} thisCar={selectedCar} cartItem={cartItem}
           thisWarehouse={warehouse}></CarPreview> : null
       }
       {carsToDisplay.map((element: Car): JSX.Element => {
         return (
-          <div className='Car' key={element.list_cars_vehicles_id} onClick={() => {
+          <div data-testid="carWindow" className='Car' key={element.list_cars_vehicles_id} onClick={() => {
             setCarLicense(element.list_cars_vehicles_licensed);
             setCar(element);
             setWarehouse(compareWarehouses(element, warehousesInfo))

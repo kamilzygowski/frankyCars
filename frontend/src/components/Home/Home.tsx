@@ -5,7 +5,7 @@ import CarList, { CarsList, Car } from '../CarList/CarList';
 import Hero from '../Hero/Hero';
 
 
-const endpointURL: string = 'http://localhost:8000/cars';
+export const endpointURL: string = 'http://localhost:8000/cars';
 
 class Home extends React.Component<() => void> {
     state = {

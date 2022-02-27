@@ -6,14 +6,14 @@ import Navbar from '../Navbar/Navbar'
 import './App.scss'
 import Cart from '../Cart/Cart'
 import { Car } from '../CarList/CarList'
-import { Sidebar } from '../Sidebar/Sidebar'
+import Sidebar from '../Sidebar/Sidebar'
 
-const App = (): JSX.Element => {
+const App:React.FC = (): JSX.Element => {
   // It controlls displaying of mobile menu (bars icon)
   const [barsIcon, setBarsIcon] = useState(true)
   const [cartItem, setCart] = useState<Car[]>([])
   // This func is made to rerender number of cart items after deleting it in Cart component
-  const useForceUpdate = (): Function => {
+  const useForceUpdate = () => {
     const [value, setValue] = useState<number>(0);
     return (): void => setValue((value: number) => value + 1); // update the state to force render
   }
@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
     const value = [...cartItem, newValue]
     setCart(value);
   }
-  const forceUpdate: Function = useForceUpdate();
+  const forceUpdate: ()=>void = useForceUpdate();
   // Home props
   const props = {
     children: handleChange,

@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Car, CarsList } from '../CarList/CarList'
+import { endpointURL } from '../Home/Home';
 import './Contact.scss';
 
 const Contact: React.FC = (): JSX.Element => {
   const [data, setData] = useState<Car[]>([])
   useEffect(() => {
     // GET all the data from server
-    axios.get('http://localhost:8000/cars')
+    axios.get(endpointURL)
       .then((result: CarsList) => {
         const data: Car[] = result.data;
         setData(data);

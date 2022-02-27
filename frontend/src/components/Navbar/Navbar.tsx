@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import './Navbar.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPhone, faCartShopping, faBars } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +8,7 @@ interface NavbarProps {
     setBarsIcon: Function;
     barsIcon: boolean;
 }
-const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = ({cartItem, setBarsIcon, barsIcon}) => {
     const navbarStyle = {
         color: '#000',
         textDecoration: 'none'
@@ -33,13 +33,13 @@ const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <FontAwesomeIcon icon={faCartShopping} />
                         <p>Cart</p>
                         <div className='cartItemsNumber'>
-                            <p>{props.cartItem.length}</p>
+                            <p>{cartItem.length}</p>
                         </div>
                     </li>
                 </Link>
             </ul>
-            <Link to="/sidebar" onClick={() => props.setBarsIcon(false)}>
-                {props.barsIcon ? <FontAwesomeIcon icon={faBars} className="mobileMenu" /> : null}
+            <Link to="/sidebar" onClick={() => setBarsIcon(false)}>
+                {barsIcon ? <FontAwesomeIcon icon={faBars} className="mobileMenu" data-testid="bars"/> : null}
             </Link>
         </div>
     )
