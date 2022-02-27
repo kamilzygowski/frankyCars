@@ -11,7 +11,7 @@ app.use(
 
 app.get("/cars", async (req, res) => {
     const results = await db.getCars();
-    console.log((results));
+   //console.log((results));
     res.status(200).send(results);
 })
 
@@ -23,3 +23,5 @@ app.get("/test", (req, res) => {
 app.listen(8000, () => {
     console.log("Server is running on port 8000");
 })
+
+module.exports.app = app;

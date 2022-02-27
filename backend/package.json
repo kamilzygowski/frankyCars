@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha *.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "expect": "^27.5.1",
     "express": "^4.17.3",
     "knex": "^0.95.15",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.1",
+    "supertest": "^6.2.2"
   }
 }
