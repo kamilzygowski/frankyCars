@@ -8,7 +8,7 @@ import Cart from '../Cart/Cart'
 import { Car } from '../CarList/CarList'
 import Sidebar from '../Sidebar/Sidebar'
 
-const App:React.FC = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
   // It controlls displaying of mobile menu (bars icon)
   const [barsIcon, setBarsIcon] = useState(true)
   const [cartItem, setCart] = useState<Car[]>([])
@@ -22,7 +22,7 @@ const App:React.FC = (): JSX.Element => {
     const value = [...cartItem, newValue]
     setCart(value);
   }
-  const forceUpdate: ()=>void = useForceUpdate();
+  const forceUpdate: () => void = useForceUpdate();
   // Home props
   const props = {
     children: handleChange,

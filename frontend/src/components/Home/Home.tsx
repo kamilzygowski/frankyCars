@@ -22,7 +22,7 @@ class Home extends React.Component<() => void> {
     }
     render() {
         return (
-            <div className="Home">
+            <div className="Home" data-testid="home">
                 <Hero header="Franky Cars" />
                 <CarList data={this.state.cars} cartItem={this.props.children} />
             </div>

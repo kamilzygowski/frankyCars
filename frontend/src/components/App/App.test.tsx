@@ -1,7 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-});
+describe('App.tsx', () => {
+  test('renders navbar', () => {
+    render(<App />);
+    const randomNavbarItem = screen.getByText(/Home/gmi);
+    expect(randomNavbarItem).toBeVisible();
+  });
+})
