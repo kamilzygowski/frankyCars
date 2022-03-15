@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/frankyCars/static/css/main.b0d20993.css",
-    "main.js": "/frankyCars/static/js/main.9de05b12.js",
+    "main.js": "/frankyCars/static/js/main.3089dfae.js",
     "static/js/787.8325debd.chunk.js": "/frankyCars/static/js/787.8325debd.chunk.js",
     "index.html": "/frankyCars/index.html",
     "main.b0d20993.css.map": "/frankyCars/static/css/main.b0d20993.css.map",
-    "main.9de05b12.js.map": "/frankyCars/static/js/main.9de05b12.js.map",
+    "main.3089dfae.js.map": "/frankyCars/static/js/main.3089dfae.js.map",
     "787.8325debd.chunk.js.map": "/frankyCars/static/js/787.8325debd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b0d20993.css",
-    "static/js/main.9de05b12.js"
+    "static/js/main.3089dfae.js"
   ]
 }
